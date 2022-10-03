@@ -21,15 +21,18 @@ export default function Home({ shipping }) {
       <Section className={styles.homeHeader}>
         <Container>
           <h1 className={styles.homeTitle}>Space Jelly Shop</h1>
-          <p className={styles.homeShipping}>
-            { shipping.rate > 0 && (
-              <>{ shipping.rate } Flat Rate Shipping</>
-            )}
-            { shipping.rate === 0 && (
-              <><strong>FREE</strong> Shipping</>
-            )}
-
-          </p>
+          {shipping.country && (
+            <p className={styles.homeShipping}>
+              { shipping.rate > 0 && (
+                <>{ shipping.rate } Flat Rate Shipping</>
+              )}
+              { shipping.rate === 0 && (
+                <><strong>FREE</strong> Shipping</>
+              )}
+              <br />
+              <span>when shipping to { shipping.country }</span>
+            </p>
+          )}
         </Container>
       </Section>
 
