@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaShoppingCart } from 'react-icons/fa';
 
 import Section from 'components/Section';
@@ -11,7 +12,9 @@ const Nav = () => {
       <Section className={styles.navSection}>
         <Container className={styles.navContainer}>
           <p className={styles.navName}>
-            <a href="/">Space Jelly Shop</a>
+            <Link href="/">
+              <a>Space Jelly Shop</a>
+            </Link>
           </p>
           <p className={styles.navCart}>
             <button>
