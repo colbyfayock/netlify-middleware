@@ -1,15 +1,15 @@
-import Head from "next/head";
+import Head from 'next/head';
 
-import Layout from "components/Layout";
-import Section from "components/Section";
-import Container from "components/Container";
-import Button from "components/Button";
+import Layout from 'components/Layout';
+import Section from 'components/Section';
+import Container from 'components/Container';
+import Button from 'components/Button';
 
-import * as React from "react";
+import * as React from 'react';
 
-import products from "data/products.json";
+import products from 'data/products.json';
 
-import styles from "styles/App.module.scss";
+import styles from 'styles/App.module.scss';
 
 const useHydrated = () => {
   const [hydrated, setHydrated] = React.useState(false);
@@ -24,9 +24,10 @@ export default function Home({ shipping }) {
 
   return (
     <Layout>
+      
       <Head>
         <title>Space Jelly Shop</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <Section className={styles.homeHeader}>
