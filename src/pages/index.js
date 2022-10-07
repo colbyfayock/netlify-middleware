@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import Head from 'next/head';
 
 import Layout from 'components/Layout';
@@ -9,7 +11,17 @@ import products from 'data/products.json';
 
 import styles from 'styles/App.module.scss';
 
+const useHydrated = () => {
+  const [hydrated, setHydrated] = React.useState(false);
+  React.useEffect(() => {
+    setHydrated(true);
+  }, []);
+  return hydrated;
+};
+
 export default function Home({ shipping }) {
+  const hydrated = useHydrated();
+
   return (
     <Layout>
 
@@ -21,13 +33,13 @@ export default function Home({ shipping }) {
       <Section className={styles.homeHeader}>
         <Container>
           <h1 className={styles.homeTitle}>Space Jelly Shop</h1>
-          {shipping.country && (
-            <p className={styles.homeShipping}>
-              { shipping.rate > 0 && (
-                <>{ shipping.rate } Flat Rate Shipping</>
-              )}
+          {hydrated && shipping.country && (
+            <p className={ styles.homeShipping }>
+              { shipping.rate > 0 && <>{ shipping.rate } Flat Rate Shipping</>}
               { shipping.rate === 0 && (
-                <><strong>FREE</strong> Shipping</>
+                <>
+                  <strong>FREE</strong> Shipping
+                </>
               )}
               <br />
               <span>when shipping to { shipping.country }</span>
@@ -42,7 +54,7 @@ export default function Home({ shipping }) {
             {products.map(product => {
               return (
                 <li key={product.id}>
-                  <img src={product.image} />
+                  <img src={ product.image } />
                   <h2>{ product.name }</h2>
                   <p>{ product.description }</p>
                   <Button>Add to Cart</Button>
@@ -63,7 +75,7 @@ export async function getStaticProps() {
       shipping: {
         country: null,
         rate: 99.99
-      }
-    }
-  }
+      },
+    },
+  };
 }
