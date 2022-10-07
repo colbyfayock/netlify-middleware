@@ -1,11 +1,11 @@
+import * as React from 'react';
+
 import Head from 'next/head';
 
 import Layout from 'components/Layout';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Button from 'components/Button';
-
-import * as React from 'react';
 
 import products from 'data/products.json';
 
@@ -24,25 +24,25 @@ export default function Home({ shipping }) {
 
   return (
     <Layout>
-      
+
       <Head>
         <title>Space Jelly Shop</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Section className={styles.homeHeader}>
         <Container>
           <h1 className={styles.homeTitle}>Space Jelly Shop</h1>
           {hydrated && shipping.country && (
-            <p className={styles.homeShipping}>
-              {shipping.rate > 0 && <>{shipping.rate} Flat Rate Shipping</>}
-              {shipping.rate === 0 && (
+            <p className={ styles.homeShipping }>
+              { shipping.rate > 0 && <>{ shipping.rate } Flat Rate Shipping</>}
+              { shipping.rate === 0 && (
                 <>
                   <strong>FREE</strong> Shipping
                 </>
               )}
               <br />
-              <span>when shipping to {shipping.country}</span>
+              <span>when shipping to { shipping.country }</span>
             </p>
           )}
         </Container>
@@ -51,12 +51,12 @@ export default function Home({ shipping }) {
       <Section>
         <Container>
           <ul className={styles.productGrid}>
-            {products.map((product) => {
+            {products.map(product => {
               return (
                 <li key={product.id}>
-                  <img src={product.image} />
-                  <h2>{product.name}</h2>
-                  <p>{product.description}</p>
+                  <img src={ product.image } />
+                  <h2>{ product.name }</h2>
+                  <p>{ product.description }</p>
                   <Button>Add to Cart</Button>
                 </li>
               );
