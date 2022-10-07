@@ -59,13 +59,14 @@ export default function Home({ shipping }) {
                   <p>{ product.description }</p>
                   <Button>Add to Cart</Button>
                 </li>
-              );
+              )
             })}
           </ul>
         </Container>
       </Section>
+
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -73,7 +74,7 @@ export async function getStaticProps() {
     props: {
       shipping: {
         country: null,
-        rate: 99.99,
+        rate: 99.99
       },
     },
   };
