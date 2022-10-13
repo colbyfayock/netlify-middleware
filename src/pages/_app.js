@@ -1,5 +1,6 @@
-import '../styles/globals.scss'
+import 'styles/globals.scss'
 
-export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  return  <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
 }
+

@@ -6,8 +6,9 @@ import Container from 'components/Container';
 import Button from 'components/Button';
 
 import products from 'data/products.json';
+import shippingRates from 'data/shipping-rates.json';
 
-import styles from 'styles/App.module.scss';
+import styles from 'styles/Home.module.scss';
 
 export default function Home({ shipping }) {
   return (
@@ -21,18 +22,11 @@ export default function Home({ shipping }) {
       <Section className={styles.homeHeader}>
         <Container>
           <h1 className={styles.homeTitle}>Space Jelly Shop</h1>
-          {shipping.country && (
-            <p className={styles.homeShipping}>
-              { shipping.rate > 0 && (
-                <>{ shipping.rate } Flat Rate Shipping</>
-              )}
-              { shipping.rate === 0 && (
-                <><strong>FREE</strong> Shipping</>
-              )}
-              <br />
-              <span>when shipping to { shipping.country }</span>
-            </p>
-          )}
+          <p className={styles.homeShipping}>
+            ${ shipping.rate.toFixed(2) } Flat Rate Shipping
+            <br/>
+            <span className={styles.homeShippingNote}>when shipping to { shipping.country }</span>
+          </p>
         </Container>
       </Section>
 
@@ -60,10 +54,7 @@ export default function Home({ shipping }) {
 export async function getStaticProps() {
   return {
     props: {
-      shipping: {
-        country: null,
-        rate: 99.99
-      }
+      shipping: shippingRates.find(({ country }) => country === 'US')
     }
   }
 }
